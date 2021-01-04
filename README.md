@@ -14,8 +14,8 @@ Updates a given property of a container identified by its name in an Amazon ECS 
 
 ## Usage
 
-To update the container name to `database` for the `web` container in the task definition file,
-and then deploy the edited task definition file to ECS:
+To update the `command` property to `'["npm", "run", "serve"]'` in the container
+named `myapp` in the task definition file, and then deploy the edited task definition file to ECS:
 
 ```yaml
 - name: Render Amazon ECS task definition
