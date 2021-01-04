@@ -1,4 +1,4 @@
-## Amazon ECS "Render Task Definition" Action for GitHub Actions
+## Amazon ECS "Set Container Property in Task Definition" Action for GitHub Actions
 
 Updates a given property of a container identified by its name in an Amazon ECS task definition JSON file, creating a new task definition file.
 
