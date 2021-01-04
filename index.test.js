@@ -214,6 +214,48 @@ describe("Render task definition", () => {
     );
   });
 
+  test("renders the task definition and creates non-existing property", async () => {
+    core.getInput = jest
+      .fn()
+      .mockReturnValueOnce("string-task-definition.json") // task-definition
+      .mockReturnValueOnce("web") // container-name
+      .mockReturnValueOnce("image") // property-name
+      .mockReturnValueOnce('"nginx"'); // value
+
+    jest.mock(
+      "./nonexisting-property-task-definition.json",
+      () => ({
+        family: "task-def-family",
+        containerDefinitions: [
+          {
+            name: "web",
+          },
+        ],
+      }),
+      { virtual: true }
+    );
+
+    await run();
+
+    expect(fs.writeFileSync).toHaveBeenNthCalledWith(
+      1,
+      "new-task-def-file-name",
+      JSON.stringify(
+        {
+          family: "task-def-family",
+          containerDefinitions: [
+            {
+              name: "web",
+              image: "nginx",
+            },
+          ],
+        },
+        null,
+        2
+      )
+    );
+  });
+
   test("renders a task definition at an absolute path", async () => {
     core.getInput = jest
       .fn()
