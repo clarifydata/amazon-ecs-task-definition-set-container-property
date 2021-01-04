@@ -20,7 +20,7 @@ named `myapp` in the task definition file, and then deploy the edited task defin
 ```yaml
 - name: Render Amazon ECS task definition
   id: render-web-container
-  uses: aws-actions/amazon-ecs-render-task-definition@v1
+  uses: clarifydata/amazon-ecs-task-definition-set-container-property@master
   with:
     task-definition: task-definition.json
     container-name: myapp
@@ -43,7 +43,7 @@ input of the second:
 ```yaml
 - name: Render Amazon ECS task definition for first container
   id: render-myapp-container
-  uses: aws-actions/amazon-ecs-render-task-definition@v1
+  uses: clarifydata/amazon-ecs-task-definition-set-container-property@master
   with:
     task-definition: task-definition.json
     container-name: myapp
@@ -52,7 +52,7 @@ input of the second:
 
 - name: Modify Amazon ECS task definition with second container
   id: render-app-container
-  uses: aws-actions/amazon-ecs-render-task-definition@v1
+  uses: clarifydata/amazon-ecs-task-definition-set-container-property@master
   with:
     task-definition: ${{ steps.render-myapp-container.outputs.task-definition }}
     container-name: postgres
