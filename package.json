@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/clarifydata/amazon-ecs-task-definition-set-container-property#readme",
   "dependencies": {
-    "@actions/core": "^1.2.6",
+    "@actions/core": "^1.6.0",
     "tmp": "^0.2.1"
   },
   "devDependencies": {
